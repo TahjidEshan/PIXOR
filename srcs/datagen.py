@@ -14,8 +14,7 @@ from torchvision import transforms
 #ITTI_PATH = '/mnt/ssd2/od/KITTI'
 # KITTI_PATH = 'KITTI'
 # KITTI_PATH = '/media/eshan/OS/Users/Eshan/Documents/Kitti/data/2011_09_26/2011_09_26_drive_0001_sync'
-KITTI_PATH = '/mnt/hdd1/lxc-hdd1/tahjid/PIXOR/srcs'
-
+KITTI_PATH = '/mnt/hdd1/lxc-hdd1/tahjid/KITTI'
 class KITTI(Dataset):
 
     geometry = {
