@@ -12,9 +12,9 @@ from torchvision import transforms
 
 #KITTI_PATH = '/home/autoronto/Kitti/object'
 #ITTI_PATH = '/mnt/ssd2/od/KITTI'
-#KITTI_PATH = 'KITTI'
-KITTI_PATH = '/media/eshan/OS/Users/Eshan/Documents/Kitti/data/2011_09_26/2011_09_26_drive_0001_sync'
-
+# KITTI_PATH = 'KITTI'
+# KITTI_PATH = '/media/eshan/OS/Users/Eshan/Documents/Kitti/data/2011_09_26/2011_09_26_drive_0001_sync'
+KITTI_PATH = '/mnt/hdd1/lxc-hdd1/tahjid/PIXOR/srcs'
 
 class KITTI(Dataset):
 
@@ -67,7 +67,7 @@ class KITTI(Dataset):
 
 
     def load_imageset(self, train):
-        path = KITTI_PATH
+        path = '/mnt/hdd1/lxc-hdd1/tahjid/KITTI'
         if train:
             path = os.path.join(path, "train.txt")
         else:
@@ -76,14 +76,14 @@ class KITTI(Dataset):
         with open(path, 'r') as f:
             lines = f.readlines() # get rid of \n symbol
             names = []
-            for line in lines[:-1]:
-                if int(line[:-1]) < self.frame_range:
+            for line in lines:
+                if int(line) < self.frame_range:
                     names.append(line[:-1])
 
             # Last line does not have a \n symbol
-            last = lines[-1][:6]
-            if int(last) < self.frame_range:
-                names.append(last)
+            # last = lines[-1][:6]
+            # if int(last) < self.frame_range:
+            #     names.append(last)
             # print(names[-1])
             print("There are {} images in txt file".format(len(names)))
 
@@ -170,7 +170,7 @@ class KITTI(Dataset):
         '''
         index = self.image_sets[index]
         f_name = (6-len(index)) * '0' + index + '.txt'
-        label_path = os.path.join(KITTI_PATH, 'oxts', 'data', f_name)
+        label_path = os.path.join(KITTI_PATH, 'training', 'label_2', f_name)
 
         object_list = {'Car': 1, 'Truck':0, 'DontCare':0, 'Van':0, 'Tram':0}
         label_map = np.zeros(self.geometry['label_shape'], dtype=np.float32)
@@ -218,7 +218,7 @@ class KITTI(Dataset):
         velo_files = []
         for file in self.image_sets:
             file = '{}.bin'.format(file)
-            velo_files.append(os.path.join(KITTI_PATH, 'velodyne_points', 'data', file))
+            velo_files.append(os.path.join(KITTI_PATH, 'training', 'velodyne', file))
 
         print('Found ' + str(len(velo_files)) + ' Velodyne scans...')
         # Read the Velodyne scans. Each point is [x,y,z,reflectance]
@@ -264,7 +264,7 @@ def get_data_loader(batch_size, use_npy, geometry=None, frame_range=10000):
     if geometry is not None:
         train_dataset.geometry = geometry
     train_dataset.load_velo()
-    train_data_loader = DataLoader(train_dataset, shuffle=True, batch_size=batch_size, num_workers=3)
+    train_data_loader = DataLoader(train_dataset, shuffle=True, batch_size=batch_size, num_workers=0)
     val_dataset = KITTI(frame_range, use_npy=use_npy, train=False)
     if geometry is not None:
         val_dataset.geometry = geometry
