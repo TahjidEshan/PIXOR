@@ -67,7 +67,7 @@ class KITTI(Dataset):
 
 
     def load_imageset(self, train):
-        path = '/mnt/hdd1/lxc-hdd1/tahjid/KITTI'
+        path = '/mnt/hdd1/lxc-hdd1/tahjid/PIXOR/srcs'
         if train:
             path = os.path.join(path, "train.txt")
         else:
