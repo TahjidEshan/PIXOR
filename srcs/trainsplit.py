@@ -1,26 +1,20 @@
 from os import listdir
 from os.path import isfile, join
 
-mypath = "/media/eshan/OS/Users/Eshan/Documents/Kitti/data/2011_09_26/2011_09_26_drive_0001_sync/velodyne_points/data"
+mypath = "/mnt/hdd1/lxc-hdd1/tahjid/KITTI/training/velodyne"
 
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-print(onlyfiles)
+print(len(onlyfiles))
 items = len(onlyfiles)
-traincount = int(items*(60/100))
-valcount = int(items*(20/100))
-testcount = items - traincount - valcount
+traincount = int(items*(80/100))
+valcount = items - traincount
 trainitems = onlyfiles[:traincount]
-valitems = onlyfiles[traincount:traincount+valcount]
-testitems = onlyfiles[traincount+valcount:]
+valitems = onlyfiles[traincount+1:]
 f= open("train.txt","w+")
 for i in trainitems:
     f.write(f"{i.replace('.bin', '')}\n")
 f.close()
 f= open("val.txt","w+")
 for i in valitems:
-    f.write(f"{i.replace('.bin', '')}\n")
-f.close()
-f= open("test.txt","w+")
-for i in testitems:
     f.write(f"{i.replace('.bin', '')}\n")
 f.close()
