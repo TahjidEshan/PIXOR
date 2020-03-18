@@ -48,7 +48,7 @@ class CustomLoss(nn.Module):
         loss:
           (tensor) loss = SmoothL1Loss(loc_preds, loc_targets) + FocalLoss(cls_preds, cls_targets).
         '''
-        targets = targets.to(preds.device)
+        # targets = targets.to(preds.device)
         batch_size = targets.size(0)
         image_size = targets.size(1) * targets.size(2)
         cls_targets, loc_targets = targets.split([1, 6], dim=1)

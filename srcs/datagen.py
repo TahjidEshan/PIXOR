@@ -258,7 +258,7 @@ class KITTI(Dataset):
         return velo_processed
 
 
-def get_data_loader(batch_size, use_npy, geometry=None, frame_range=10000):
+def get_data_loader(batch_size, use_npy, geometry=None, frame_range=100):
     train_dataset = KITTI(frame_range, use_npy=use_npy, train=True)
     if geometry is not None:
         train_dataset.geometry = geometry

@@ -71,7 +71,7 @@ def eval_batch(config, net, loss_fn, loader, device, eval_range='all'):
             # Parallel post-processing
             predictions = list(torch.split(predictions.cpu(), 1, dim=0))
             batch_size = len(predictions)
-            with Pool (processes=3) as pool:
+            with Pool (processes=1) as pool:
                 preds_filtered = pool.starmap(filter_pred, [(config, pred) for pred in predictions])
             t_nms += (time.time() - toc)
             args = []
@@ -91,7 +91,7 @@ def eval_batch(config, net, loss_fn, loader, device, eval_range='all'):
 
             # Parallel compute matchesi
             
-            with Pool (processes=3) as pool:
+            with Pool (processes=1) as pool:
                 matches = pool.starmap(compute_matches, args)
             
             for j in range(batch_size):
@@ -258,14 +258,14 @@ def train(exp_name, device):
             epoch + 1, time.time() - start_time, train_loss))
 
         # Run Validation
-        if (epoch +1) % 2 == 0:
-            tic = time.time()
-            val_metrics, _, _, log_images = eval_batch(config, net, loss_fn, test_data_loader, device)
-            for tag, value in val_metrics.items():
-                val_logger.scalar_summary(tag, value, epoch + 1)
-            val_logger.image_summary('Predictions', log_images, epoch + 1)
-            print("Epoch {}|Time {:.3f}|Validation Loss: {:.5f}".format(
-                epoch + 1, time.time() - tic, val_metrics['loss']))
+        # if (epoch +1) % 2 == 0:
+        #     tic = time.time()
+        #     val_metrics, _, _, log_images = eval_batch(config, net, loss_fn, test_data_loader, device)
+        #     for tag, value in val_metrics.items():
+        #         val_logger.scalar_summary(tag, value, epoch + 1)
+        #     val_logger.image_summary('Predictions', log_images, epoch + 1)
+        #     print("Epoch {}|Time {:.3f}|Validation Loss: {:.5f}".format(
+        #         epoch + 1, time.time() - tic, val_metrics['loss']))
 
         # Save Checkpoint
         if (epoch + 1) == max_epochs or (epoch + 1) % config['save_every'] == 0:
@@ -389,6 +389,7 @@ if __name__ == "__main__":
     device = torch.device(args.device)
     if not torch.cuda.is_available():
         device = torch.device('cpu')
+    device = torch.device('cuda:0')
     print("Using device", device)
 
     if args.mode=='train':
