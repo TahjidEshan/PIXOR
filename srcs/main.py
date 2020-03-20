@@ -318,9 +318,11 @@ def eval_one(net, loss_fn, config, loader, image_id, device, plot=False, verbose
 
     if plot == True:
         # Visualization
-        plot_bev(input_np, label_list, window_name='GT')
         plot_bev(input_np, corners, window_name='Prediction')
-        plot_label_map(cls_pred.numpy())
+        plot_bev(input_np, label_list, window_name='GT')
+        plot_bev(input_np, corners, window_name='Prediction1')
+        plot_label_map(cls_pred.cpu().numpy())
+        time.sleep(5000)
 
     return num_gt, num_pred, scores, pred_image, pred_match, loss.item(), t_forward, t_post
 
@@ -382,7 +384,7 @@ if __name__ == "__main__":
     parser.add_argument('--name', required=True, help="name of the experiment")
     parser.add_argument('--device', default='cpu', help='device to train on')
     parser.add_argument('--eval_range', type=int, help="range of evaluation")
-    parser.add_argument('--test_id', type=int, default=25, help="id of the image to test")
+    parser.add_argument('--test_id', type=int, default=0, help="id of the image to test")
     args = parser.parse_args()
 
 
