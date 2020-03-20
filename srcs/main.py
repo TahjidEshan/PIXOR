@@ -363,7 +363,7 @@ def test(exp_name, device, image_id):
     train_loader, val_loader = get_data_loader(1, config['use_npy'], geometry=config['geometry'],
                                                frame_range=config['frame_range'])
     net.eval()
-
+    print("jere")
     with torch.no_grad():
         num_gt, num_pred, scores, pred_image, pred_match, loss, t_forward, t_nms = \
             eval_one(net, loss_fn, config, train_loader, image_id, device, plot=True)

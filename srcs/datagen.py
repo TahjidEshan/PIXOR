@@ -171,7 +171,7 @@ class KITTI(Dataset):
         f_name = (6-len(index)) * '0' + index + '.txt'
         label_path = os.path.join(KITTI_PATH, 'training', 'label_2', f_name)
 
-        object_list = {'Car': 1, 'Truck':0, 'DontCare':0, 'Van':0, 'Tram':0}
+        object_list = {'Car': 0, 'Truck':1, 'DontCare':0, 'Van':1, 'Tram':1}
         label_map = np.zeros(self.geometry['label_shape'], dtype=np.float32)
         label_list = []
         with open(label_path, 'r') as f:
@@ -183,7 +183,11 @@ class KITTI(Dataset):
                 if name in list(object_list.keys()):
                     bbox.append(object_list[name])
                     bbox.extend([float(e) for e in entry[1:]])
-                    if name == 'Car':
+                    # if name == 'Car':
+                    #     corners, reg_target = self.get_corners(bbox)
+                    #     self.update_label_map(label_map, corners, reg_target)
+                    #     label_list.append(corners)
+                    if name in {'Truck','Van','Tram'}:
                         corners, reg_target = self.get_corners(bbox)
                         self.update_label_map(label_map, corners, reg_target)
                         label_list.append(corners)

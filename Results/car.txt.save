@@ -1,0 +1,4 @@
+                    # if name == 'Car':
+                    #     corners, reg_target = self.get_corners(bbox)
+                    #     self.update_label_map(label_map, corners, reg_target)
+                    #     label_list.append(corners)
