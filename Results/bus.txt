@@ -1,0 +1,61 @@
+Epoch 1|Time 1305.733|Training Loss: 0.75288
+Epoch 2|Time 1310.343|Training Loss: 0.59928
+Checkpoint saved at experiments/default/2epoch
+Epoch 3|Time 1309.355|Training Loss: 0.54529
+Epoch 4|Time 1309.273|Training Loss: 0.52606
+Checkpoint saved at experiments/default/4epoch
+Epoch 5|Time 1308.600|Training Loss: 0.52637
+Epoch 6|Time 1309.484|Training Loss: 0.50567
+Checkpoint saved at experiments/default/6epoch
+Epoch 7|Time 1310.126|Training Loss: 0.48853
+Epoch 8|Time 1309.827|Training Loss: 0.44926
+Checkpoint saved at experiments/default/8epoch
+Epoch 9|Time 1309.709|Training Loss: 0.42260
+Epoch 10|Time 1309.500|Training Loss: 0.39195
+Checkpoint saved at experiments/default/10epoch
+Epoch 11|Time 1310.099|Training Loss: 0.36897
+Epoch 12|Time 1310.925|Training Loss: 0.34979
+Checkpoint saved at experiments/default/12epoch
+Epoch 13|Time 1310.561|Training Loss: 0.33119
+Epoch 14|Time 1310.766|Training Loss: 0.31201
+Checkpoint saved at experiments/default/14epoch
+Epoch 15|Time 1311.491|Training Loss: 0.30572
+Epoch 16|Time 1311.238|Training Loss: 0.29956
+Checkpoint saved at experiments/default/16epoch
+Epoch 17|Time 1312.025|Training Loss: 0.28829
+Epoch 18|Time 1312.381|Training Loss: 0.28844
+Checkpoint saved at experiments/default/18epoch
+Epoch 19|Time 1312.036|Training Loss: 0.28101
+Epoch 20|Time 1313.254|Training Loss: 0.23820
+Checkpoint saved at experiments/default/20epoch
+Epoch 21|Time 1312.986|Training Loss: 0.22715
+Epoch 22|Time 1312.558|Training Loss: 0.22341
+Checkpoint saved at experiments/default/22epoch
+Epoch 23|Time 1313.491|Training Loss: 0.18999
+Epoch 24|Time 1313.029|Training Loss: 0.16791
+Checkpoint saved at experiments/default/24epoch
+Epoch 25|Time 1312.740|Training Loss: 0.15997
+Epoch 26|Time 1313.416|Training Loss: 0.15705
+Checkpoint saved at experiments/default/26epoch
+Epoch 27|Time 1312.709|Training Loss: 0.15501
+Epoch 28|Time 1313.008|Training Loss: 0.15006
+Checkpoint saved at experiments/default/28epoch
+Epoch 29|Time 1313.118|Training Loss: 0.14633
+Epoch 30|Time 1312.278|Training Loss: 0.14120
+Checkpoint saved at experiments/default/30epoch
+Epoch 31|Time 1314.675|Training Loss: 0.13866
+Epoch 32|Time 1315.223|Training Loss: 0.13961
+Checkpoint saved at experiments/default/32epoch
+Epoch 33|Time 1315.131|Training Loss: 0.13689
+Epoch 34|Time 1315.209|Training Loss: 0.13961
+Checkpoint saved at experiments/default/34epoch
+Epoch 35|Time 1314.419|Training Loss: 0.13575
+Epoch 36|Time 1315.798|Training Loss: 0.13533
+Checkpoint saved at experiments/default/36epoch
+Epoch 37|Time 1314.695|Training Loss: 0.13396
+Epoch 38|Time 1314.759|Training Loss: 0.13371
+Checkpoint saved at experiments/default/38epoch
+Epoch 39|Time 1315.243|Training Loss: 0.13435
+Epoch 40|Time 1315.255|Training Loss: 0.13459
+Checkpoint saved at experiments/default/40epoch
+Finished Training
